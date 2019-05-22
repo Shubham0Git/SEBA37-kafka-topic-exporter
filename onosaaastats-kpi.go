@@ -25,12 +25,12 @@ import (
 	"github.com/Shopify/sarama"
 )
 
-func STATSListner(topic *string, master sarama.Consumer, wg sync.WaitGroup) {
-	fmt.Println("Starting STATSListner")
+func ONOSAAAListner(topic *string, master sarama.Consumer, wg sync.WaitGroup) {
+	fmt.Println("Starting ONOSAAAListner")
 	defer wg.Done()
 	consumer, err := master.ConsumePartition(*topic, 0, sarama.OffsetOldest)
 	if err != nil {
-		fmt.Println("STATSListner panic")
+		fmt.Println("ONOSAAAListner panic")
 		panic(err)
 	}
 	//Package signal implements access to incoming signals.
@@ -44,7 +44,7 @@ func STATSListner(topic *string, master sarama.Consumer, wg sync.WaitGroup) {
 				fmt.Println(err)
 			case msg := <-consumer.Messages():
 
-				kpi := AuthStatKPI{}
+				kpi := OnosaaaKPI{}
 
 				err := json.Unmarshal(msg.Value, &kpi)
 
@@ -52,7 +52,7 @@ func STATSListner(topic *string, master sarama.Consumer, wg sync.WaitGroup) {
 					log.Fatal(err)
 				}
 
-				exportAuthStatKPI(kpi)
+				exportOnosaaaKPI(kpi)
 
 			case <-signals:
 				fmt.Println("Interrupt is detected")

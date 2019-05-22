@@ -80,17 +80,17 @@ type OnosKPI struct {
 	Ports    []*OnosPort `json:"ports"`
 }
 
-type AuthStatKPI struct {
-	AuthState           string  `json:"authenticationStatisticsState"`
-	AcceptPkt           float64 `json:"acceptPacketCounter"`
-	RejectPkt           float64 `json:"rejectPacketCounter"`
-	ChallengePkt        float64 `json:"challengePacketCounter"`
-	AccessPkt           float64 `json:"accessPacketCounter"`
-	InvalidValid        float64 `json:"invalidValidatorCounter"`
-	UnknownType         float64 `json:"unknownTypeCounter"`
-	PendingRqst         float64 `json:"pendingRequestCounter"`
-	DroppedPkt          float64 `json:"numberOfDroppedPackets"`
-	MalformedPkt        float64 `json:"malformed_packet_counter"`
-	UnknownsrvrPkt      float64 `json:"numberOfPacketFromUnknownServer"`
-	RoundTripPkt        float64 `json:"packetRoundtripTimeInMilis"`
+type OnosaaaKPI struct {
+	RxAcceptResponses    float64 `json:"acceptResponsesRx"`
+	RxRejectResponses    float64 `json:"rejectResponsesRx"`
+	RxChallengeResponses float64 `json:"challengeResponsesRx"`
+	TxAccessRequests     float64 `json:"accessRequestsTx"`
+	RxInvalidValidators  float64 `json:"invalidValidatorsRx"`
+	RxUnknownType        float64 `json:"unknownTypeRx"`
+	PendingRequests      float64 `json:"pendingRequests"`
+	RxDroppedResponses   float64 `json:"droppedResponsesRx"`
+	RxMalformedResponses float64 `json:"malformedResponsesRx"`
+	RxUnknownserver      float64 `json:"unknownServerRx"`
+	RequestRttMillis     float64 `json:"requestRttMillis"`
+	RequestReTx          float64 `json:"requestReTx"`
 }
